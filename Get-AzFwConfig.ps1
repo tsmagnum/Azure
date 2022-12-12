@@ -24,10 +24,10 @@ $Resource = "https://management.core.windows.net/"
 $RequestAccessTokenUri = "https://login.microsoftonline.com/$TenantId/oauth2/token"
 $body = "grant_type=client_credentials&client_id=$ClientId&client_secret=$ClientSecret&resource=$Resource"
 
-#Get the access token
+#Getting the access token
 $AccessToken = Invoke-RestMethod -Method Post -Uri $RequestAccessTokenUri -Body $body -ContentType 'application/x-www-form-urlencoded'
 
-#Format the authorization header for the API call
+#Formatting the authorization header for the API call
 $Headers = @{}
 $Headers.Add("Authorization","$($AccessToken.token_type) "+ " " + "$($AccessToken.access_token)")
 
